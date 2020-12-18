@@ -1,0 +1,76 @@
+{
+  "$schema": "https://hypar.io/Schemas/Function.json",
+  "id": "d9a9a29b-62d2-43bc-9476-288f83c1d5c4",
+  "name": "Plus-Shaped Envelope",
+  "description": "Creates a plus-shaped envelope on a site.",
+  "language": "C#",
+  "model_dependencies": [
+    {
+      "autohide": false,
+      "name": "Site",
+      "optional": false
+    }
+  ],
+  "model_output": "Envelope",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "Plus Center Location": {
+        "description": "A 3D vector.",
+        "default": null,
+        "$hyparOrder": 3,
+        "$ref": "https://hypar.io/Schemas/Geometry/Vector3.json"
+      },
+      "Site Setback": {
+        "multipleOf": 1,
+        "description": "How far back from the site boundary.",
+        "maximum": 10,
+        "type": "number",
+        "$hyparUnitType": "length",
+        "$hyparOrder": 0,
+        "minimum": 1
+      },
+      "Envelope Height": {
+        "multipleOf": 1,
+        "description": "How tall should the envelope be?",
+        "maximum": 300,
+        "type": "number",
+        "$hyparUnitType": "length",
+        "$hyparOrder": 2,
+        "minimum": 4
+      },
+      "Rotation": {
+        "description": "The angle of rotation of the cross relative to the world XY Axes",
+        "maximum": 90,
+        "type": "number",
+        "$hyparUnitType": "angle",
+        "$hyparOrder": 4,
+        "minimum": 0
+      },
+      "Envelope Width": {
+        "multipleOf": 1,
+        "description": "How wide should each leg of the envelope be?",
+        "maximum": 30,
+        "type": "number",
+        "$hyparUnitType": "length",
+        "$hyparOrder": 1,
+        "minimum": 10
+      }
+    }
+  },
+  "outputs": [
+    {
+      "unit_type": "volume",
+      "name": "Volume",
+      "description": "The volume.",
+      "type": "number"
+    }
+  ],
+  "element_types": [
+    "https://raw.githubusercontent.com/hypar-io/Schemas/master/Site.json",
+    "https://prod-api.hypar.io/schemas/Envelope"
+  ],
+  "repository_url": "https://github.com/hypar-io/function",
+  "source_file_key": null,
+  "preview_image": null
+}
